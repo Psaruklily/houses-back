@@ -1,5 +1,6 @@
  const houseService = require('../service/house-service');
  const errorCodes = require('../constant/errorCodes');
+ const House = require('../database/models/House');
  
  module.exports = {
      getAllHouses: (req, res) => {
@@ -9,7 +10,6 @@
          } catch (error) {
              res.status(errorCodes.BAD_REQUEST).json(error.message);
          }
-         
      },
 
      getOneHouse: (req, res) => {
@@ -24,8 +24,18 @@
 
      createHouse: (req, res) => {
          try {
-            houseService.createHouse(req.body);
-            res.status(201).json('User created!');
+            // houseService.createHouse(req.body);
+            House.create({
+                id: 1,
+                urlHouse: 'https://st.depositphotos.com/1029202/2552/i/600/depositphotos_25521405-stock-photo-american-home.jpg',
+                price: '$1,615',
+                beds: 3,
+                baths: 3,
+                square: 1950,
+                address: '8411 Red Cypress, Charlotte NC',
+                ZIPcode: 28216
+            })
+            res.status(201).json('House created!');
          } catch (error) {
              error.status(errorCodes.BAD_REQUEST).json(error.message)
          }

@@ -1,11 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
+const port = process.env.PORT || 5000;
 
-// _connectDB();
-
-// mongoose.connect('mongodb+srv://psarukli96:psaruk123@houses.ugrow.mongodb.net/Houses', { useNewUrlParser: true }, {useUnifiedTopology: true});
+_connectDB();
 
 const apiRouter = require('./router/api-router');
 
@@ -16,15 +16,16 @@ app.use('/', apiRouter);
 
 
 
-app.listen(5000, () => {
-    console.log('App listen 5000');
+app.listen(port, () => {
+    console.log(`App listen ${port}`);
 })
 
 function _connectDB() {
-    mongoose.connect('mongodb://localhost:27017/houses');
+    const uri = process.env.ATLAS_URI;
+    mongoose.connect(uri, { useNewUrlParser: true,  useUnifiedTopology: true });
     const {connection} = mongoose;
 
-    connection.on('error', (error) => {
-        onmouseleave.log(error);
+    connection.once('open', () => {
+        console.log('NongoDB database connection stablished successfully!')
     })
 }

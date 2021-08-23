@@ -1,15 +1,15 @@
-const DB = require('../database/house');
+// const DB = require('../database/house');
 
-module.exports = {
-    findHouses: () => {
-        return DB;
-    },
+// module.exports = {
+//     findHouses: () => {
+//         return DB;
+//     },
 
-    findHouseById: (id) => {
-        return DB[id];
-    },
+//     findHouseById: (id) => {
+//         return DB[id];
+//     },
 
-    createHouse: (obj) => {
-         DB.push(obj);
-    }
-}
+//     createHouse: (obj) => {
+//          DB.push(obj);
+//     }
+// }
