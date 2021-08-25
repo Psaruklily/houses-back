@@ -1,15 +1,7 @@
-// const DB = require('../database/house');
+const House = require('../database/models/House');
 
-// module.exports = {
-//     findHouses: () => {
-//         return DB;
-//     },
+module.exports = {
+    findHouses: () => House.find(),
 
-//     findHouseById: (id) => {
-//         return DB[id];
-//     },
-
-//     createHouse: (obj) => {
-//          DB.push(obj);
-//     }
-// }
+    findHouseById: (id) => House.findById(id),
+}
