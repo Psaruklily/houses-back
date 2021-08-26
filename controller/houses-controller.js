@@ -12,15 +12,18 @@
      },
 
      getOneHouse: async(req, res) => {
-         try {
-            const {id} = req.params;
-            const house = await houseService.findHouseById(id);
-            res.json(house);
-         } catch (error) {
-             res.status(errorCodes.BAD_REQUEST).json(error.message);
-         }
-     },
-
+        try {
+           const {id} = req.params;
+           const house = await houseService.findHouseById(id);
+          
+           console.log(house);
+        
+           res.json(house);
+        } catch (error) {
+            res.status(errorCodes.BAD_REQUEST).json(error.message);
+        }
+    },
+    
     //  createHouse: (req, res) => {
     //      try {
     //         // houseService.createHouse(req.body);

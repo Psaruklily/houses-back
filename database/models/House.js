@@ -8,7 +8,8 @@ const houseSchema = new Schema({
     baths: {type: Number},
     square: {type: Number},
     address: {type: String},
-    ZIPcode: {type: Number}
-}, { timestamps: true })
+    ZIPcode: {type: Number},
+    details: {type: Schema.Types.ObjectId, ref: 'HouseDetail'}
+});
 
 module.exports = model('House', houseSchema);
